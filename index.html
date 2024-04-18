@@ -1,11 +1,155 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/favicon.ico" href="img/favicon.ico">
+    <link rel="stylesheet" href="estilo.css">
     <title>Mazda Concesionarios</title>
 </head>
+
 <body>
-    
+    <header>
+        <h1>Concesionarios Mazda</h1>
+        <img src="img/mazda_logo.png" alt="Logo de Mazda" width="140" height="100">
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="contacto.html">Contacto</a>
+            <a href="sobre_nosotros.html">Sobre nosotros</a>
+        </nav>
+    </header>
+    <main>
+        <aside id="formularioUsuario">
+            <form name="Datos del usuario" method="post">
+                <div class="campo">
+                    Nombre y apellidos:
+                    <input type="text" name="nombre_apellidos" placeholder="Nombre y apellidos" required>
+                </div>
+                <div class="campo">
+                    DNI con letra:
+                    <input type="text" name="dni" pattern="[0-9]{8,9}[A-Z]" placeholder="DNI" required>
+                </div>
+                <div class="campo">
+                    Número de teléfono:
+                    <input type="tel" name="telefono" pattern="[0-9]{1,9}" placeholder="+34 612 34 56 78" required>
+                </div>
+                <div class="campo">
+                    Correo electrónico:
+                    <input type="email" name="email" placeholder="ejemplo@correo.ej" required>
+                </div>
+                <div class="campo">
+                    Dirección de entrega:
+                    <input type="text" name="dirección" placeholder="Calle, número, puerta" required>
+                </div>
+                <div class="campo">
+                    Fecha preferente de entrega:
+                    <input type="date" name="fecha_entrega" placeholder="Fecha de entrega" required>
+                </div>
+                <div class="campo">
+                    Método de pago:
+                    <input type="radio" name="metodo_pago" value="contado"> Al contado
+                    <input type="radio" name="metodo_pago" value="financiado"> Financiado
+                </div>
+                <div class="campo">
+                    En caso de elegir financiado, seleccionar el número de cuotas:
+                    <input type="range" name="cuotas" min="3" max="24" step="3">
+                    <span id="cuotasValue"></span>
+                </div>
+                <div class="campo">
+                    Número de cuenta:
+                    <input type="text" name="iban" pattern="[A-Z]{2}[0-9]{2}[0-9]{4}[0-9]{4}[0-9]{4}[0-9]{2}"
+                        placeholder="ES12345678901234567890" autocomplete="off" required>
+                </div>
+                <div class="campo">
+                    Archivo de la nómina o justificante de ingresos (formato PDF):
+                    <input type="file" name="archivo" required>
+                </div>
+            </form>
+        </aside>
+        <aside id="formularioCoche">
+            <form name="Datos del coche" method="post">
+                <div class="campo">
+                    Tipo de vehículo:
+                    <select name="tipo_vehiculo">
+                        <option value="Berlina">Berlina</option>
+                        <option value="Familiar">Familiar</option>
+                        <option value="Coupe">Coupe</option>
+                        <option value="Monovolumen">Monovolumen</option>
+                        <option value="SUV">SUV</option>
+                        <option value="Cabrio">Cabrio</option>
+                        <option value="Pick up">Pick up</option>
+                    </select>
+                </div>
+                <div class="campo">
+                    Cambio:
+                    <input type="radio" name="cambio" value="manual"> Manual
+                    <input type="radio" name="cambio" value="automatico"> Automático
+                </div>
+                <div class="campo">
+                    Combustible:
+                    <input type="radio" name="combustible" value="gasolina"> Gasolina
+                    <input type="radio" name="combustible" value="gasoil"> Gasoil
+                    <input type="radio" name="combustible" value="gas"> Gas
+                </div>
+                <div class="campo">
+                    Modelo del coche:
+                    <input type="text" name="modelo" maxlength="20" placeholder="Modelo">
+                </div>
+                <div class="campo">
+                    Color del coche:
+                    <input type="color" name="color_coche">
+                </div>
+                <div class="campo">
+                    Color interior de la tapicería:
+                    <select name="color_tapiceria">
+                        <option value="blanco">Blanco</option>
+                        <option value="beige">Beige</option>
+                        <option value="marron">Marrón</option>
+                        <option value="azul">Azul</option>
+                        <option value="rojo">Rojo</option>
+                        <option value="verde">Verde</option>
+                        <option value="gris_claro">Gris claro</option>
+                        <option value="gris_oscuro">Gris oscuro</option>
+                        <option value="negro">Negro</option>
+                    </select>
+                </div>
+                <div class="campo">
+                    Equipamiento adicional:
+                    <input type="checkbox" name="equipamiento" value="alfombrillas"> Alfombrillas
+                    <input type="checkbox" name="equipamiento" value="bandeja_protectora"> Bandeja protectora del
+                    maletero
+                    <input type="checkbox" name="equipamiento" value="colgador_trajes"> Colgador de trajes para el
+                    asiento trasero
+                    <input type="checkbox" name="equipamiento" value="reposabrazos"> Reposabrazos central
+                    <input type="checkbox" name="equipamiento" value="ambientador"> Ambientador de pino
+                </div>
+                <div class="campo">
+                    Comentarios sobre el nuevo vehículo:
+                    <textarea name="comentarios" spellcheck="true"></textarea>
+                </div>
+            </form>
+        </aside>
+        <section id="confirmacion">
+            <section>
+                <div>
+                    <input type="checkbox" name="terminos_condiciones" required> Acepto los términos y condiciones de
+                    compra
+                </div>
+                <div>
+                    <input type="checkbox" name="comunicaciones_comerciales" checked> Deseo recibir información y
+                    comunicaciones comerciales sobre nuevos artículos, promociones y ofertas a mi correo electrónico
+                </div>
+                <div>
+                    <button type="submit">Solicitar vehículo</button>
+                    <button type="reset">Cancelar solicitud</button>
+                </div>
+            </section>
+        </section>
+    </main>
+    <footer>
+        <p>&copy;Mazda Motor Corporation</p>
+    </footer>
 </body>
+
 </html>
